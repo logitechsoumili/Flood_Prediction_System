@@ -7,14 +7,7 @@ coords = pd.read_csv("city_coordinates.csv")
 preds = pd.read_csv("city_predictions.csv")
 df = pd.merge(coords, preds, on="city")
 
-# Create base map
-india_map = folium.Map(location=[22.5, 79.0], zoom_start=5)
-
-# -------------------------------
-# Marker Layer (City Risk Markers)
-# -------------------------------
-marker_layer = folium.FeatureGroup(name="City Risk Markers")
-
+# Define helper function for risk color
 def risk_color(risk):
     if risk == "High":
         return "red"
@@ -23,48 +16,7 @@ def risk_color(risk):
     else:
         return "green"
 
-for _, row in df.iterrows():
-    folium.CircleMarker(
-        location=[row["latitude"], row["longitude"]],
-        radius=5 + row["flood_probability"] * 10,
-        color=risk_color(row["risk_level"]),
-        fill=True,
-        fill_color=risk_color(row["risk_level"]),
-        fill_opacity=0.7,
-        popup=folium.Popup(
-            f"""
-            <b>{row['city']}</b><br>
-            Flood Probability: <b>{row['flood_probability']}</b><br>
-            Risk Level: <b>{row['risk_level']}</b>
-            """,
-            max_width=250
-        )
-    ).add_to(marker_layer)
-
-marker_layer.add_to(india_map)
-
-# -------------------------------
-# Heatmap Layer (Risk Intensity)
-# -------------------------------
-heatmap_layer = folium.FeatureGroup(name="Flood Risk Heatmap")
-
-heat_data = [
-    [row["latitude"], row["longitude"], row["flood_probability"]]
-    for _, row in df.iterrows()
-]
-
-HeatMap(
-    heat_data,
-    radius=25,
-    blur=15,
-    min_opacity=0.3
-).add_to(heatmap_layer)
-
-heatmap_layer.add_to(india_map)
-
-# -------------------------------
-# Legend
-# -------------------------------
+# Legend HTML
 legend_html = """
 <div style="
 position: fixed;
@@ -84,13 +36,50 @@ padding: 10px;
 </div>
 """
 
-india_map.get_root().html.add_child(folium.Element(legend_html))
+# ================================
+# MAP 1: City Risk Markers Map
+# ================================
+markers_map = folium.Map(location=[22.5, 79.0], zoom_start=5)
 
-# -------------------------------
-# Layer Toggle Control
-# -------------------------------
-folium.LayerControl(collapsed=False).add_to(india_map)
+for _, row in df.iterrows():
+    folium.CircleMarker(
+        location=[row["latitude"], row["longitude"]],
+        radius=5 + row["flood_probability"] * 10,
+        color=risk_color(row["risk_level"]),
+        fill=True,
+        fill_color=risk_color(row["risk_level"]),
+        fill_opacity=0.7,
+        popup=folium.Popup(
+            f"""
+            <b>{row['city']}</b><br>
+            Flood Probability: <b>{row['flood_probability']}</b><br>
+            Risk Level: <b>{row['risk_level']}</b>
+            """,
+            max_width=250
+        )
+    ).add_to(markers_map)
 
-# Save map
-india_map.save("flood_risk_map.html")
-print("Toggle-enabled map saved as flood_risk_map.html")
+markers_map.get_root().html.add_child(folium.Element(legend_html))
+markers_map.save("city_markers_map.html")
+print("City markers map saved as city_markers_map.html")
+
+# ================================
+# MAP 2: Flood Risk Heatmap
+# ================================
+heatmap_map = folium.Map(location=[22.5, 79.0], zoom_start=5)
+
+heat_data = [
+    [row["latitude"], row["longitude"], row["flood_probability"]]
+    for _, row in df.iterrows()
+]
+
+HeatMap(
+    heat_data,
+    radius=25,
+    blur=15,
+    min_opacity=0.3
+).add_to(heatmap_map)
+
+heatmap_map.get_root().html.add_child(folium.Element(legend_html))
+heatmap_map.save("flood_risk_heatmap.html")
+print("Flood risk heatmap saved as flood_risk_heatmap.html")

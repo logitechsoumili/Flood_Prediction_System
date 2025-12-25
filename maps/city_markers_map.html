@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_a49c241bcba39379ae3e001044b6a0df {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<div style="
+position: fixed;
+bottom: 50px;
+left: 50px;
+width: 180px;
+background-color: white;
+border: 2px solid grey;
+z-index: 9999;
+font-size: 14px;
+padding: 10px;
+">
+<b>Flood Risk Levels</b><br><br>
+<span style="color:red;">●</span> High Risk<br>
+<span style="color:orange;">●</span> Medium Risk<br>
+<span style="color:green;">●</span> Low Risk
+</div>
+    
+            <div class="folium-map" id="map_a49c241bcba39379ae3e001044b6a0df" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_a49c241bcba39379ae3e001044b6a0df = L.map(
+                "map_a49c241bcba39379ae3e001044b6a0df",
+                {
+                    center: [22.5, 79.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 5,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_fe33bb05275b2998d56c58bed5f9205e = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_fe33bb05275b2998d56c58bed5f9205e.addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+            var circle_marker_d8621430e44975faa900f14e6724953e = L.circleMarker(
+                [13.0827, 80.2707],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.6, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_aa5054a74ee2140b655dda3051040f1d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_55f057880c7ff28f6c7e970993654afb = $(`<div id="html_55f057880c7ff28f6c7e970993654afb" style="width: 100.0%; height: 100.0%;">             <b>Chennai</b><br>             Flood Probability: <b>0.86</b><br>             Risk Level: <b>High</b>             </div>`)[0];
+                popup_aa5054a74ee2140b655dda3051040f1d.setContent(html_55f057880c7ff28f6c7e970993654afb);
+            
+        
+
+        circle_marker_d8621430e44975faa900f14e6724953e.bindPopup(popup_aa5054a74ee2140b655dda3051040f1d)
+        ;
+
+        
+    
+    
+            var circle_marker_016ae6a110e1ca1c6f097db8e57f25d3 = L.circleMarker(
+                [19.076, 72.8777],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.6, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_58c4f663ed05ea6a38fa7855f5344b3a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_da8c23ec2d4d8f964cdeaa0e444b2acf = $(`<div id="html_da8c23ec2d4d8f964cdeaa0e444b2acf" style="width: 100.0%; height: 100.0%;">             <b>Mumbai</b><br>             Flood Probability: <b>0.86</b><br>             Risk Level: <b>High</b>             </div>`)[0];
+                popup_58c4f663ed05ea6a38fa7855f5344b3a.setContent(html_da8c23ec2d4d8f964cdeaa0e444b2acf);
+            
+        
+
+        circle_marker_016ae6a110e1ca1c6f097db8e57f25d3.bindPopup(popup_58c4f663ed05ea6a38fa7855f5344b3a)
+        ;
+
+        
+    
+    
+            var circle_marker_34685642fd8aaf61210c4146e3107aac = L.circleMarker(
+                [22.5726, 88.3639],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.5, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_aca36febcc1983eac010303047f66c20 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_08a51ab3bd73d58b38df0f3f86616be2 = $(`<div id="html_08a51ab3bd73d58b38df0f3f86616be2" style="width: 100.0%; height: 100.0%;">             <b>Kolkata</b><br>             Flood Probability: <b>0.85</b><br>             Risk Level: <b>High</b>             </div>`)[0];
+                popup_aca36febcc1983eac010303047f66c20.setContent(html_08a51ab3bd73d58b38df0f3f86616be2);
+            
+        
+
+        circle_marker_34685642fd8aaf61210c4146e3107aac.bindPopup(popup_aca36febcc1983eac010303047f66c20)
+        ;
+
+        
+    
+    
+            var circle_marker_c50cb3ea30bafb10e1467ec6482e081c = L.circleMarker(
+                [28.6139, 77.209],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.5, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_e5c9cf2e1ba38588a2ec4ff5755a04a6 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a32226a37206e7f212e2948bc86c6a8c = $(`<div id="html_a32226a37206e7f212e2948bc86c6a8c" style="width: 100.0%; height: 100.0%;">             <b>Delhi</b><br>             Flood Probability: <b>0.65</b><br>             Risk Level: <b>High</b>             </div>`)[0];
+                popup_e5c9cf2e1ba38588a2ec4ff5755a04a6.setContent(html_a32226a37206e7f212e2948bc86c6a8c);
+            
+        
+
+        circle_marker_c50cb3ea30bafb10e1467ec6482e081c.bindPopup(popup_e5c9cf2e1ba38588a2ec4ff5755a04a6)
+        ;
+
+        
+    
+    
+            var circle_marker_670c5329a0d5b4ca0a69df6b3b7d8bf1 = L.circleMarker(
+                [9.4981, 76.3388],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.7, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_59ddc25bbe33af4738e2a1de13b398c4 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_03f6a551c980d4816dd9ea7205794c4c = $(`<div id="html_03f6a551c980d4816dd9ea7205794c4c" style="width: 100.0%; height: 100.0%;">             <b>Alappuzha</b><br>             Flood Probability: <b>0.77</b><br>             Risk Level: <b>High</b>             </div>`)[0];
+                popup_59ddc25bbe33af4738e2a1de13b398c4.setContent(html_03f6a551c980d4816dd9ea7205794c4c);
+            
+        
+
+        circle_marker_670c5329a0d5b4ca0a69df6b3b7d8bf1.bindPopup(popup_59ddc25bbe33af4738e2a1de13b398c4)
+        ;
+
+        
+    
+    
+            var circle_marker_571f5dcf08281eea71d4507025f73330 = L.circleMarker(
+                [9.9312, 76.2673],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.6, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_11a64b9abcda61279a0b1e2fb152840d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_c74d15603e4b90c981b7daec798452a3 = $(`<div id="html_c74d15603e4b90c981b7daec798452a3" style="width: 100.0%; height: 100.0%;">             <b>Kochi</b><br>             Flood Probability: <b>0.76</b><br>             Risk Level: <b>High</b>             </div>`)[0];
+                popup_11a64b9abcda61279a0b1e2fb152840d.setContent(html_c74d15603e4b90c981b7daec798452a3);
+            
+        
+
+        circle_marker_571f5dcf08281eea71d4507025f73330.bindPopup(popup_11a64b9abcda61279a0b1e2fb152840d)
+        ;
+
+        
+    
+    
+            var circle_marker_a43e1f83e11937f03e3941440b0d3626 = L.circleMarker(
+                [9.5916, 76.5222],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.6, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_386b2da50c224e62adbc7f375bf0addf = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_36318dc68a9d4c1d6b6ccb1842411a2a = $(`<div id="html_36318dc68a9d4c1d6b6ccb1842411a2a" style="width: 100.0%; height: 100.0%;">             <b>Kottayam</b><br>             Flood Probability: <b>0.76</b><br>             Risk Level: <b>High</b>             </div>`)[0];
+                popup_386b2da50c224e62adbc7f375bf0addf.setContent(html_36318dc68a9d4c1d6b6ccb1842411a2a);
+            
+        
+
+        circle_marker_a43e1f83e11937f03e3941440b0d3626.bindPopup(popup_386b2da50c224e62adbc7f375bf0addf)
+        ;
+
+        
+    
+    
+            var circle_marker_dee77cd05794027729fc8bc6d404e2ed = L.circleMarker(
+                [10.5276, 76.2144],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.1, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_e152373ec78457391597eef82fb82711 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_27a693f0b4c34d8c5cd89089272e228c = $(`<div id="html_27a693f0b4c34d8c5cd89089272e228c" style="width: 100.0%; height: 100.0%;">             <b>Thrissur</b><br>             Flood Probability: <b>0.71</b><br>             Risk Level: <b>High</b>             </div>`)[0];
+                popup_e152373ec78457391597eef82fb82711.setContent(html_27a693f0b4c34d8c5cd89089272e228c);
+            
+        
+
+        circle_marker_dee77cd05794027729fc8bc6d404e2ed.bindPopup(popup_e152373ec78457391597eef82fb82711)
+        ;
+
+        
+    
+    
+            var circle_marker_d558a944de0999d7b750e2d94debf2fa = L.circleMarker(
+                [14.4426, 79.9865],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.7, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_34deb449aa5fdd742a626163abc0e9c4 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_3fef5a23d7956265541f837d74ad2971 = $(`<div id="html_3fef5a23d7956265541f837d74ad2971" style="width: 100.0%; height: 100.0%;">             <b>Nellore</b><br>             Flood Probability: <b>0.77</b><br>             Risk Level: <b>High</b>             </div>`)[0];
+                popup_34deb449aa5fdd742a626163abc0e9c4.setContent(html_3fef5a23d7956265541f837d74ad2971);
+            
+        
+
+        circle_marker_d558a944de0999d7b750e2d94debf2fa.bindPopup(popup_34deb449aa5fdd742a626163abc0e9c4)
+        ;
+
+        
+    
+    
+            var circle_marker_cde68cf057c6e7d028e02f9e4b3b0c96 = L.circleMarker(
+                [16.3067, 80.4365],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.6, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_eb556cf4f98c55164645d18ed78b0f79 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_0fcc185b8d8ee900ed95a020ad83243d = $(`<div id="html_0fcc185b8d8ee900ed95a020ad83243d" style="width: 100.0%; height: 100.0%;">             <b>Guntur</b><br>             Flood Probability: <b>0.76</b><br>             Risk Level: <b>High</b>             </div>`)[0];
+                popup_eb556cf4f98c55164645d18ed78b0f79.setContent(html_0fcc185b8d8ee900ed95a020ad83243d);
+            
+        
+
+        circle_marker_cde68cf057c6e7d028e02f9e4b3b0c96.bindPopup(popup_eb556cf4f98c55164645d18ed78b0f79)
+        ;
+
+        
+    
+    
+            var circle_marker_ac8cd09aa25612644510511acab8a256 = L.circleMarker(
+                [16.5062, 80.648],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.6, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_2ec8f4ee9d7655fa55339b514ea7a9da = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_394398f0332c813de083988aa8884a20 = $(`<div id="html_394398f0332c813de083988aa8884a20" style="width: 100.0%; height: 100.0%;">             <b>Vijayawada</b><br>             Flood Probability: <b>0.76</b><br>             Risk Level: <b>High</b>             </div>`)[0];
+                popup_2ec8f4ee9d7655fa55339b514ea7a9da.setContent(html_394398f0332c813de083988aa8884a20);
+            
+        
+
+        circle_marker_ac8cd09aa25612644510511acab8a256.bindPopup(popup_2ec8f4ee9d7655fa55339b514ea7a9da)
+        ;
+
+        
+    
+    
+            var circle_marker_e1cc42922dda0416cc904d20b13604d3 = L.circleMarker(
+                [13.6288, 79.4192],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.2, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_0735b9b14d8db6eb0b56c2a9e8b5ec19 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_8c2ab1adb00f1a5b2e29ab037daebc67 = $(`<div id="html_8c2ab1adb00f1a5b2e29ab037daebc67" style="width: 100.0%; height: 100.0%;">             <b>Tirupati</b><br>             Flood Probability: <b>0.52</b><br>             Risk Level: <b>Medium</b>             </div>`)[0];
+                popup_0735b9b14d8db6eb0b56c2a9e8b5ec19.setContent(html_8c2ab1adb00f1a5b2e29ab037daebc67);
+            
+        
+
+        circle_marker_e1cc42922dda0416cc904d20b13604d3.bindPopup(popup_0735b9b14d8db6eb0b56c2a9e8b5ec19)
+        ;
+
+        
+    
+    
+            var circle_marker_dd63ae166e239126be2f4973f4c82aba = L.circleMarker(
+                [12.9141, 74.856],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.2, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_ac8430191b6b2c0dad0d485d9507fc9a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_ccfd849cb62faf35ad1d63b237dd6694 = $(`<div id="html_ccfd849cb62faf35ad1d63b237dd6694" style="width: 100.0%; height: 100.0%;">             <b>Mangaluru</b><br>             Flood Probability: <b>0.72</b><br>             Risk Level: <b>High</b>             </div>`)[0];
+                popup_ac8430191b6b2c0dad0d485d9507fc9a.setContent(html_ccfd849cb62faf35ad1d63b237dd6694);
+            
+        
+
+        circle_marker_dd63ae166e239126be2f4973f4c82aba.bindPopup(popup_ac8430191b6b2c0dad0d485d9507fc9a)
+        ;
+
+        
+    
+    
+            var circle_marker_8e976edfb4a4593b44a63c424eb2b5a7 = L.circleMarker(
+                [13.3409, 74.7421],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.2, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_d6193c7f1e67ccf6710d641a8c3964fc = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_45579472beaada7d162ed438661ebfa0 = $(`<div id="html_45579472beaada7d162ed438661ebfa0" style="width: 100.0%; height: 100.0%;">             <b>Udupi</b><br>             Flood Probability: <b>0.72</b><br>             Risk Level: <b>High</b>             </div>`)[0];
+                popup_d6193c7f1e67ccf6710d641a8c3964fc.setContent(html_45579472beaada7d162ed438661ebfa0);
+            
+        
+
+        circle_marker_8e976edfb4a4593b44a63c424eb2b5a7.bindPopup(popup_d6193c7f1e67ccf6710d641a8c3964fc)
+        ;
+
+        
+    
+    
+            var circle_marker_a4927808627f83283624f54c5ab024d9 = L.circleMarker(
+                [14.812, 74.129],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.4, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_4fcf823eba9f971c63cbfaa330ed1f1a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_8ed6cbbc827b6f12ed388347bfd25c7d = $(`<div id="html_8ed6cbbc827b6f12ed388347bfd25c7d" style="width: 100.0%; height: 100.0%;">             <b>Karwar</b><br>             Flood Probability: <b>0.74</b><br>             Risk Level: <b>High</b>             </div>`)[0];
+                popup_4fcf823eba9f971c63cbfaa330ed1f1a.setContent(html_8ed6cbbc827b6f12ed388347bfd25c7d);
+            
+        
+
+        circle_marker_a4927808627f83283624f54c5ab024d9.bindPopup(popup_4fcf823eba9f971c63cbfaa330ed1f1a)
+        ;
+
+        
+    
+    
+            var circle_marker_d23021f28410f84bb8be9729119c8e5d = L.circleMarker(
+                [15.4909, 73.8278],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.2, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_2dc05712222faf293b1b729cba8af6f4 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_dd3099bf12b7c26426fde5170858f8dc = $(`<div id="html_dd3099bf12b7c26426fde5170858f8dc" style="width: 100.0%; height: 100.0%;">             <b>Panaji</b><br>             Flood Probability: <b>0.72</b><br>             Risk Level: <b>High</b>             </div>`)[0];
+                popup_2dc05712222faf293b1b729cba8af6f4.setContent(html_dd3099bf12b7c26426fde5170858f8dc);
+            
+        
+
+        circle_marker_d23021f28410f84bb8be9729119c8e5d.bindPopup(popup_2dc05712222faf293b1b729cba8af6f4)
+        ;
+
+        
+    
+    
+            var circle_marker_7c1093b5f415dc639f766cea239fcecd = L.circleMarker(
+                [19.8135, 85.8312],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.2, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_03c42bf52e0586f0bbf977fd39b96269 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_84214ce8674932d4654f303a172a102b = $(`<div id="html_84214ce8674932d4654f303a172a102b" style="width: 100.0%; height: 100.0%;">             <b>Puri</b><br>             Flood Probability: <b>0.72</b><br>             Risk Level: <b>High</b>             </div>`)[0];
+                popup_03c42bf52e0586f0bbf977fd39b96269.setContent(html_84214ce8674932d4654f303a172a102b);
+            
+        
+
+        circle_marker_7c1093b5f415dc639f766cea239fcecd.bindPopup(popup_03c42bf52e0586f0bbf977fd39b96269)
+        ;
+
+        
+    
+    
+            var circle_marker_df5024b81060659e9dd8607c9abc40ab = L.circleMarker(
+                [20.4625, 85.883],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.4, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_3d30fcb6ce89435c10b940425eaab475 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_105ec8d5d6894972e92a04c406b6e87a = $(`<div id="html_105ec8d5d6894972e92a04c406b6e87a" style="width: 100.0%; height: 100.0%;">             <b>Cuttack</b><br>             Flood Probability: <b>0.44</b><br>             Risk Level: <b>Medium</b>             </div>`)[0];
+                popup_3d30fcb6ce89435c10b940425eaab475.setContent(html_105ec8d5d6894972e92a04c406b6e87a);
+            
+        
+
+        circle_marker_df5024b81060659e9dd8607c9abc40ab.bindPopup(popup_3d30fcb6ce89435c10b940425eaab475)
+        ;
+
+        
+    
+    
+            var circle_marker_f513fd42966cb19e79ed635882d062e7 = L.circleMarker(
+                [21.1702, 72.8311],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.5, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_3f36b286ba83db233da1d5c18e360676 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_6bdbd448a0411f4490b826f8e09e2ea6 = $(`<div id="html_6bdbd448a0411f4490b826f8e09e2ea6" style="width: 100.0%; height: 100.0%;">             <b>Surat</b><br>             Flood Probability: <b>0.65</b><br>             Risk Level: <b>High</b>             </div>`)[0];
+                popup_3f36b286ba83db233da1d5c18e360676.setContent(html_6bdbd448a0411f4490b826f8e09e2ea6);
+            
+        
+
+        circle_marker_f513fd42966cb19e79ed635882d062e7.bindPopup(popup_3f36b286ba83db233da1d5c18e360676)
+        ;
+
+        
+    
+    
+            var circle_marker_241a66f52fabc369b3a342e8f6303b68 = L.circleMarker(
+                [22.3072, 73.1812],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.9, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_9c8cdeb1a9325ae639e642d223cd2615 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b54d71f921fa8c7343693dc2a678b470 = $(`<div id="html_b54d71f921fa8c7343693dc2a678b470" style="width: 100.0%; height: 100.0%;">             <b>Vadodara</b><br>             Flood Probability: <b>0.39</b><br>             Risk Level: <b>Medium</b>             </div>`)[0];
+                popup_9c8cdeb1a9325ae639e642d223cd2615.setContent(html_b54d71f921fa8c7343693dc2a678b470);
+            
+        
+
+        circle_marker_241a66f52fabc369b3a342e8f6303b68.bindPopup(popup_9c8cdeb1a9325ae639e642d223cd2615)
+        ;
+
+        
+    
+    
+            var circle_marker_bc8cdb6a5011d45c3fe7c1a7ec2f37c4 = L.circleMarker(
+                [22.3039, 70.8022],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.2, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_68353fc21fa579daa106dd75b793d788 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_e1976b7d8c2ea75ab1dff89cab9cbca0 = $(`<div id="html_e1976b7d8c2ea75ab1dff89cab9cbca0" style="width: 100.0%; height: 100.0%;">             <b>Rajkot</b><br>             Flood Probability: <b>0.62</b><br>             Risk Level: <b>Medium</b>             </div>`)[0];
+                popup_68353fc21fa579daa106dd75b793d788.setContent(html_e1976b7d8c2ea75ab1dff89cab9cbca0);
+            
+        
+
+        circle_marker_bc8cdb6a5011d45c3fe7c1a7ec2f37c4.bindPopup(popup_68353fc21fa579daa106dd75b793d788)
+        ;
+
+        
+    
+    
+            var circle_marker_06638ae31850aadb457d8fcfe28955e3 = L.circleMarker(
+                [23.0225, 72.5714],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.600000000000001, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_18b34e50b03d67992d372f33bf4000b7 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f7a9d3e86abfcac554912c9c9e13be83 = $(`<div id="html_f7a9d3e86abfcac554912c9c9e13be83" style="width: 100.0%; height: 100.0%;">             <b>Ahmedabad</b><br>             Flood Probability: <b>0.46</b><br>             Risk Level: <b>Medium</b>             </div>`)[0];
+                popup_18b34e50b03d67992d372f33bf4000b7.setContent(html_f7a9d3e86abfcac554912c9c9e13be83);
+            
+        
+
+        circle_marker_06638ae31850aadb457d8fcfe28955e3.bindPopup(popup_18b34e50b03d67992d372f33bf4000b7)
+        ;
+
+        
+    
+    
+            var circle_marker_bd4b0d3db5eecf3f94c3a41c2a565873 = L.circleMarker(
+                [22.7196, 75.8577],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.2, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_fde39815b1f039da8370f94385f2c63b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_04d0cfc546bf0450341a757cc0f71635 = $(`<div id="html_04d0cfc546bf0450341a757cc0f71635" style="width: 100.0%; height: 100.0%;">             <b>Indore</b><br>             Flood Probability: <b>0.52</b><br>             Risk Level: <b>Medium</b>             </div>`)[0];
+                popup_fde39815b1f039da8370f94385f2c63b.setContent(html_04d0cfc546bf0450341a757cc0f71635);
+            
+        
+
+        circle_marker_bd4b0d3db5eecf3f94c3a41c2a565873.bindPopup(popup_fde39815b1f039da8370f94385f2c63b)
+        ;
+
+        
+    
+    
+            var circle_marker_cccae96db3761c982ed21ac8daa62962 = L.circleMarker(
+                [23.2599, 77.4126],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.2, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_8b6c107dd0b23b7174770de4d51f513f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_1bb4e85adc3e7169d5d061984ee1491a = $(`<div id="html_1bb4e85adc3e7169d5d061984ee1491a" style="width: 100.0%; height: 100.0%;">             <b>Bhopal</b><br>             Flood Probability: <b>0.52</b><br>             Risk Level: <b>Medium</b>             </div>`)[0];
+                popup_8b6c107dd0b23b7174770de4d51f513f.setContent(html_1bb4e85adc3e7169d5d061984ee1491a);
+            
+        
+
+        circle_marker_cccae96db3761c982ed21ac8daa62962.bindPopup(popup_8b6c107dd0b23b7174770de4d51f513f)
+        ;
+
+        
+    
+    
+            var circle_marker_07a5e7e2c4a1b372cd50ff2d274f2375 = L.circleMarker(
+                [21.1458, 79.0882],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.0, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_bcc46ea16cb0096bdcbc067ab015eaab = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_6ac9639b509819011cc34f71fe193367 = $(`<div id="html_6ac9639b509819011cc34f71fe193367" style="width: 100.0%; height: 100.0%;">             <b>Nagpur</b><br>             Flood Probability: <b>0.5</b><br>             Risk Level: <b>Medium</b>             </div>`)[0];
+                popup_bcc46ea16cb0096bdcbc067ab015eaab.setContent(html_6ac9639b509819011cc34f71fe193367);
+            
+        
+
+        circle_marker_07a5e7e2c4a1b372cd50ff2d274f2375.bindPopup(popup_bcc46ea16cb0096bdcbc067ab015eaab)
+        ;
+
+        
+    
+    
+            var circle_marker_793318753a46122fef974f529b0776b2 = L.circleMarker(
+                [18.5204, 73.8567],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.0, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_da179acc334a2ec0d257b02f7f872a0e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_9bb0f60b77b578970c8ca1172056af2f = $(`<div id="html_9bb0f60b77b578970c8ca1172056af2f" style="width: 100.0%; height: 100.0%;">             <b>Pune</b><br>             Flood Probability: <b>0.5</b><br>             Risk Level: <b>Medium</b>             </div>`)[0];
+                popup_da179acc334a2ec0d257b02f7f872a0e.setContent(html_9bb0f60b77b578970c8ca1172056af2f);
+            
+        
+
+        circle_marker_793318753a46122fef974f529b0776b2.bindPopup(popup_da179acc334a2ec0d257b02f7f872a0e)
+        ;
+
+        
+    
+    
+            var circle_marker_d86bba6cc68beb8de4c8622690796824 = L.circleMarker(
+                [21.2514, 81.6296],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.4, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_2ec6add6b82005432f87a00ccef109c9 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_7384503e5683477391ea2edd79780792 = $(`<div id="html_7384503e5683477391ea2edd79780792" style="width: 100.0%; height: 100.0%;">             <b>Raipur</b><br>             Flood Probability: <b>0.54</b><br>             Risk Level: <b>Medium</b>             </div>`)[0];
+                popup_2ec6add6b82005432f87a00ccef109c9.setContent(html_7384503e5683477391ea2edd79780792);
+            
+        
+
+        circle_marker_d86bba6cc68beb8de4c8622690796824.bindPopup(popup_2ec6add6b82005432f87a00ccef109c9)
+        ;
+
+        
+    
+    
+            var circle_marker_72550d7b872c73b4a20fb687503bc91b = L.circleMarker(
+                [23.3441, 85.3096],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.3, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_d1b2492df2d1909b3f0e0be7e5c1d19d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4c55a4c39caf9accfaa9f2e1b7b98ba3 = $(`<div id="html_4c55a4c39caf9accfaa9f2e1b7b98ba3" style="width: 100.0%; height: 100.0%;">             <b>Ranchi</b><br>             Flood Probability: <b>0.53</b><br>             Risk Level: <b>Medium</b>             </div>`)[0];
+                popup_d1b2492df2d1909b3f0e0be7e5c1d19d.setContent(html_4c55a4c39caf9accfaa9f2e1b7b98ba3);
+            
+        
+
+        circle_marker_72550d7b872c73b4a20fb687503bc91b.bindPopup(popup_d1b2492df2d1909b3f0e0be7e5c1d19d)
+        ;
+
+        
+    
+    
+            var circle_marker_fcf574fdf653aa559b0215208495c67d = L.circleMarker(
+                [22.8046, 86.2029],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.2, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_a67f7e481dad03f31743e49e5209783e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a928c065d6b972d830ff47c0a478bf36 = $(`<div id="html_a928c065d6b972d830ff47c0a478bf36" style="width: 100.0%; height: 100.0%;">             <b>Jamshedpur</b><br>             Flood Probability: <b>0.62</b><br>             Risk Level: <b>Medium</b>             </div>`)[0];
+                popup_a67f7e481dad03f31743e49e5209783e.setContent(html_a928c065d6b972d830ff47c0a478bf36);
+            
+        
+
+        circle_marker_fcf574fdf653aa559b0215208495c67d.bindPopup(popup_a67f7e481dad03f31743e49e5209783e)
+        ;
+
+        
+    
+    
+            var circle_marker_dc58178d96f89d2860457e47743db059 = L.circleMarker(
+                [25.5941, 85.1376],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.9, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_bb612f767bebaa09e3685c5705e9dd0d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b5b611e1928bf1949555037b4044ceaf = $(`<div id="html_b5b611e1928bf1949555037b4044ceaf" style="width: 100.0%; height: 100.0%;">             <b>Patna</b><br>             Flood Probability: <b>0.39</b><br>             Risk Level: <b>Medium</b>             </div>`)[0];
+                popup_bb612f767bebaa09e3685c5705e9dd0d.setContent(html_b5b611e1928bf1949555037b4044ceaf);
+            
+        
+
+        circle_marker_dc58178d96f89d2860457e47743db059.bindPopup(popup_bb612f767bebaa09e3685c5705e9dd0d)
+        ;
+
+        
+    
+    
+            var circle_marker_f60c27c4958dd88e60e227587469aac0 = L.circleMarker(
+                [26.7271, 88.3953],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.600000000000001, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_b42c6ebdc3657bb6c055ac898519ab22 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_82b929cb446f1a684bfc9d5823dd56dd = $(`<div id="html_82b929cb446f1a684bfc9d5823dd56dd" style="width: 100.0%; height: 100.0%;">             <b>Siliguri</b><br>             Flood Probability: <b>0.46</b><br>             Risk Level: <b>Medium</b>             </div>`)[0];
+                popup_b42c6ebdc3657bb6c055ac898519ab22.setContent(html_82b929cb446f1a684bfc9d5823dd56dd);
+            
+        
+
+        circle_marker_f60c27c4958dd88e60e227587469aac0.bindPopup(popup_b42c6ebdc3657bb6c055ac898519ab22)
+        ;
+
+        
+    
+    
+            var circle_marker_4a9bf65a2452107b68e26410cca00ab5 = L.circleMarker(
+                [26.1445, 91.7362],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.2, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_98f9cc2db2a82f9bec87ec11cc03020d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b0ea9e42ed31546a84d179175805ae74 = $(`<div id="html_b0ea9e42ed31546a84d179175805ae74" style="width: 100.0%; height: 100.0%;">             <b>Guwahati</b><br>             Flood Probability: <b>0.52</b><br>             Risk Level: <b>Medium</b>             </div>`)[0];
+                popup_98f9cc2db2a82f9bec87ec11cc03020d.setContent(html_b0ea9e42ed31546a84d179175805ae74);
+            
+        
+
+        circle_marker_4a9bf65a2452107b68e26410cca00ab5.bindPopup(popup_98f9cc2db2a82f9bec87ec11cc03020d)
+        ;
+
+        
+    
+    
+            var circle_marker_172c1a7e6edec4cd8e658fef98c05d4b = L.circleMarker(
+                [27.4728, 94.912],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.7, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_f46fc996f29cc50f0d8e04cbb327c754 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a9160bcaae5ab476d1677e99648b9ce9 = $(`<div id="html_a9160bcaae5ab476d1677e99648b9ce9" style="width: 100.0%; height: 100.0%;">             <b>Dibrugarh</b><br>             Flood Probability: <b>0.57</b><br>             Risk Level: <b>Medium</b>             </div>`)[0];
+                popup_f46fc996f29cc50f0d8e04cbb327c754.setContent(html_a9160bcaae5ab476d1677e99648b9ce9);
+            
+        
+
+        circle_marker_172c1a7e6edec4cd8e658fef98c05d4b.bindPopup(popup_f46fc996f29cc50f0d8e04cbb327c754)
+        ;
+
+        
+    
+    
+            var circle_marker_b403e42f2d88c10ff3b2e26d3aef407c = L.circleMarker(
+                [26.6528, 92.7926],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.2, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_55fa07aadf78e61b8a77f9cfcd9a9095 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_97841a5a54474ca7fd1dc15e82a427e4 = $(`<div id="html_97841a5a54474ca7fd1dc15e82a427e4" style="width: 100.0%; height: 100.0%;">             <b>Tezpur</b><br>             Flood Probability: <b>0.52</b><br>             Risk Level: <b>Medium</b>             </div>`)[0];
+                popup_55fa07aadf78e61b8a77f9cfcd9a9095.setContent(html_97841a5a54474ca7fd1dc15e82a427e4);
+            
+        
+
+        circle_marker_b403e42f2d88c10ff3b2e26d3aef407c.bindPopup(popup_55fa07aadf78e61b8a77f9cfcd9a9095)
+        ;
+
+        
+    
+    
+            var circle_marker_86f4ecb4993863bd8d01bdd2be8aef5c = L.circleMarker(
+                [27.0844, 93.6053],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.4, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_d9737f1703b1295a2a15a10b673a66e0 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_79fc0a5656fe66ac19a1b5bcb46ef9f6 = $(`<div id="html_79fc0a5656fe66ac19a1b5bcb46ef9f6" style="width: 100.0%; height: 100.0%;">             <b>Itanagar</b><br>             Flood Probability: <b>0.54</b><br>             Risk Level: <b>Medium</b>             </div>`)[0];
+                popup_d9737f1703b1295a2a15a10b673a66e0.setContent(html_79fc0a5656fe66ac19a1b5bcb46ef9f6);
+            
+        
+
+        circle_marker_86f4ecb4993863bd8d01bdd2be8aef5c.bindPopup(popup_d9737f1703b1295a2a15a10b673a66e0)
+        ;
+
+        
+    
+    
+            var circle_marker_2cbfc0cb56f0518e099726c146547ac1 = L.circleMarker(
+                [27.3389, 88.6065],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.2, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_ae7198b4144fc5e92ecfce66de99cf1f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_639b8a0c8c8d323cce7ef36480f8e00d = $(`<div id="html_639b8a0c8c8d323cce7ef36480f8e00d" style="width: 100.0%; height: 100.0%;">             <b>Gangtok</b><br>             Flood Probability: <b>0.52</b><br>             Risk Level: <b>Medium</b>             </div>`)[0];
+                popup_ae7198b4144fc5e92ecfce66de99cf1f.setContent(html_639b8a0c8c8d323cce7ef36480f8e00d);
+            
+        
+
+        circle_marker_2cbfc0cb56f0518e099726c146547ac1.bindPopup(popup_ae7198b4144fc5e92ecfce66de99cf1f)
+        ;
+
+        
+    
+    
+            var circle_marker_86d4f4be4717ceb84a50084f1970fab4 = L.circleMarker(
+                [31.1048, 77.1734],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.5, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_110f15675c200e5ea7a5d3f112ab6982 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_07bc14e6c05330812564dbd57c48953c = $(`<div id="html_07bc14e6c05330812564dbd57c48953c" style="width: 100.0%; height: 100.0%;">             <b>Shimla</b><br>             Flood Probability: <b>0.55</b><br>             Risk Level: <b>Medium</b>             </div>`)[0];
+                popup_110f15675c200e5ea7a5d3f112ab6982.setContent(html_07bc14e6c05330812564dbd57c48953c);
+            
+        
+
+        circle_marker_86d4f4be4717ceb84a50084f1970fab4.bindPopup(popup_110f15675c200e5ea7a5d3f112ab6982)
+        ;
+
+        
+    
+    
+            var circle_marker_f194d5d3e122580d6163f52f0ee9a70e = L.circleMarker(
+                [34.1526, 77.5771],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.800000000000001, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_f021e150e6aebbd2b32ce8b91c69f6e9 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_071d1cbcd572536c5be3a6024de244c3 = $(`<div id="html_071d1cbcd572536c5be3a6024de244c3" style="width: 100.0%; height: 100.0%;">             <b>Leh</b><br>             Flood Probability: <b>0.28</b><br>             Risk Level: <b>Low</b>             </div>`)[0];
+                popup_f021e150e6aebbd2b32ce8b91c69f6e9.setContent(html_071d1cbcd572536c5be3a6024de244c3);
+            
+        
+
+        circle_marker_f194d5d3e122580d6163f52f0ee9a70e.bindPopup(popup_f021e150e6aebbd2b32ce8b91c69f6e9)
+        ;
+
+        
+    
+    
+            var circle_marker_aeb85d4f90dfe6f6b6398cef607f09a5 = L.circleMarker(
+                [34.5539, 76.1349],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.7, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_e83ff4058634367e2bf2190604807683 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a32cd50eba19f80a896006a0b049b8c9 = $(`<div id="html_a32cd50eba19f80a896006a0b049b8c9" style="width: 100.0%; height: 100.0%;">             <b>Kargil</b><br>             Flood Probability: <b>0.27</b><br>             Risk Level: <b>Low</b>             </div>`)[0];
+                popup_e83ff4058634367e2bf2190604807683.setContent(html_a32cd50eba19f80a896006a0b049b8c9);
+            
+        
+
+        circle_marker_aeb85d4f90dfe6f6b6398cef607f09a5.bindPopup(popup_e83ff4058634367e2bf2190604807683)
+        ;
+
+        
+    
+    
+            var circle_marker_0d0c28d7674c2e54be6aaebcbc428b4f = L.circleMarker(
+                [26.9124, 75.7873],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.2, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_5e40580572c2541094997412c6b85c7f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_e004913fc030310a4d309b8bb8bd87ea = $(`<div id="html_e004913fc030310a4d309b8bb8bd87ea" style="width: 100.0%; height: 100.0%;">             <b>Jaipur</b><br>             Flood Probability: <b>0.52</b><br>             Risk Level: <b>Medium</b>             </div>`)[0];
+                popup_5e40580572c2541094997412c6b85c7f.setContent(html_e004913fc030310a4d309b8bb8bd87ea);
+            
+        
+
+        circle_marker_0d0c28d7674c2e54be6aaebcbc428b4f.bindPopup(popup_5e40580572c2541094997412c6b85c7f)
+        ;
+
+        
+    
+    
+            var circle_marker_614e2270d4bbfee99e06bd7402c4e947 = L.circleMarker(
+                [26.9157, 70.9083],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.0, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_1a9cc4eb0f16eee83a595ebc99266058 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_970d57e16c73dfc486b0721bb54a2e26 = $(`<div id="html_970d57e16c73dfc486b0721bb54a2e26" style="width: 100.0%; height: 100.0%;">             <b>Jaisalmer</b><br>             Flood Probability: <b>0.5</b><br>             Risk Level: <b>Medium</b>             </div>`)[0];
+                popup_1a9cc4eb0f16eee83a595ebc99266058.setContent(html_970d57e16c73dfc486b0721bb54a2e26);
+            
+        
+
+        circle_marker_614e2270d4bbfee99e06bd7402c4e947.bindPopup(popup_1a9cc4eb0f16eee83a595ebc99266058)
+        ;
+
+        
+    
+    
+            var circle_marker_19d255b9b915e0e720dcfcd0097d1a18 = L.circleMarker(
+                [12.9716, 77.5946],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.2, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_ba24ec77fbdafecfe77fec0c8e51ca42 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4fd4fdb81a50b476836df2fc69b2c73d = $(`<div id="html_4fd4fdb81a50b476836df2fc69b2c73d" style="width: 100.0%; height: 100.0%;">             <b>Bengaluru</b><br>             Flood Probability: <b>0.52</b><br>             Risk Level: <b>Medium</b>             </div>`)[0];
+                popup_ba24ec77fbdafecfe77fec0c8e51ca42.setContent(html_4fd4fdb81a50b476836df2fc69b2c73d);
+            
+        
+
+        circle_marker_19d255b9b915e0e720dcfcd0097d1a18.bindPopup(popup_ba24ec77fbdafecfe77fec0c8e51ca42)
+        ;
+
+        
+    
+    
+            var circle_marker_607f1e106790891a0f05d6c97b2d11b1 = L.circleMarker(
+                [17.385, 78.4867],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.2, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_d0683b31abf006f27ee422f9fe70ae33 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_3f20cf30123f5bde8ad629560b361e67 = $(`<div id="html_3f20cf30123f5bde8ad629560b361e67" style="width: 100.0%; height: 100.0%;">             <b>Hyderabad</b><br>             Flood Probability: <b>0.52</b><br>             Risk Level: <b>Medium</b>             </div>`)[0];
+                popup_d0683b31abf006f27ee422f9fe70ae33.setContent(html_3f20cf30123f5bde8ad629560b361e67);
+            
+        
+
+        circle_marker_607f1e106790891a0f05d6c97b2d11b1.bindPopup(popup_d0683b31abf006f27ee422f9fe70ae33)
+        ;
+
+        
+    
+    
+            var circle_marker_b8ff087869d612d9bd4459dbbde303cb = L.circleMarker(
+                [11.6643, 78.146],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.2, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_620e576da9dfcd69a19475c3b98a63b4 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_5b413fbd3fd1b21d6895e0be6ee8610e = $(`<div id="html_5b413fbd3fd1b21d6895e0be6ee8610e" style="width: 100.0%; height: 100.0%;">             <b>Salem</b><br>             Flood Probability: <b>0.52</b><br>             Risk Level: <b>Medium</b>             </div>`)[0];
+                popup_620e576da9dfcd69a19475c3b98a63b4.setContent(html_5b413fbd3fd1b21d6895e0be6ee8610e);
+            
+        
+
+        circle_marker_b8ff087869d612d9bd4459dbbde303cb.bindPopup(popup_620e576da9dfcd69a19475c3b98a63b4)
+        ;
+
+        
+    
+    
+            var circle_marker_3215956b25e1946fa2a70289617643f2 = L.circleMarker(
+                [11.341, 77.7172],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.2, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_f7f4a0cfd9bb2dc356590b3ff840055e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_7186dea0b971d26ed51782a806937cd4 = $(`<div id="html_7186dea0b971d26ed51782a806937cd4" style="width: 100.0%; height: 100.0%;">             <b>Erode</b><br>             Flood Probability: <b>0.52</b><br>             Risk Level: <b>Medium</b>             </div>`)[0];
+                popup_f7f4a0cfd9bb2dc356590b3ff840055e.setContent(html_7186dea0b971d26ed51782a806937cd4);
+            
+        
+
+        circle_marker_3215956b25e1946fa2a70289617643f2.bindPopup(popup_f7f4a0cfd9bb2dc356590b3ff840055e)
+        ;
+
+        
+    
+    
+            var circle_marker_ece7a99eb69f1fa8084ea49215af912f = L.circleMarker(
+                [9.9252, 78.1198],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.9, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_928d29589c904690c5fca18edf95ba68 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_c11a1671a0d7e25afe8c6b76c568230f = $(`<div id="html_c11a1671a0d7e25afe8c6b76c568230f" style="width: 100.0%; height: 100.0%;">             <b>Madurai</b><br>             Flood Probability: <b>0.49</b><br>             Risk Level: <b>Medium</b>             </div>`)[0];
+                popup_928d29589c904690c5fca18edf95ba68.setContent(html_c11a1671a0d7e25afe8c6b76c568230f);
+            
+        
+
+        circle_marker_ece7a99eb69f1fa8084ea49215af912f.bindPopup(popup_928d29589c904690c5fca18edf95ba68)
+        ;
+
+        
+    
+    
+            var circle_marker_d0132418d4f6210e91e53d1f5e3e2587 = L.circleMarker(
+                [10.7905, 78.7047],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.0, "stroke": true, "weight": 3}
+            ).addTo(map_a49c241bcba39379ae3e001044b6a0df);
+        
+    
+        var popup_9e02185b41c65f1c49182cecc08a3964 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f58c43d9590d4a3fe44beb8ffe9d8018 = $(`<div id="html_f58c43d9590d4a3fe44beb8ffe9d8018" style="width: 100.0%; height: 100.0%;">             <b>Trichy</b><br>             Flood Probability: <b>0.5</b><br>             Risk Level: <b>Medium</b>             </div>`)[0];
+                popup_9e02185b41c65f1c49182cecc08a3964.setContent(html_f58c43d9590d4a3fe44beb8ffe9d8018);
+            
+        
+
+        circle_marker_d0132418d4f6210e91e53d1f5e3e2587.bindPopup(popup_9e02185b41c65f1c49182cecc08a3964)
+        ;
+
+        
+    
+</script>
+</html>
