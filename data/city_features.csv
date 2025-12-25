@@ -1,0 +1,5 @@
+city,rainfall,temperature,humidity,river_discharge,water_level,elevation,population_density,infrastructure,historical_floods,land_cover,soil_type
+kolkata,300,30,85,4200,4.2,9,24000,1,1,urban,silt
+delhi,180,35,60,2500,3.0,216,11000,1,0,urban,loam
+mumbai,280,29,80,3900,4.0,14,21000,1,1,urban,clay
+chennai,250,31,75,3600,3.8,6,18000,1,1,urban,sandy
