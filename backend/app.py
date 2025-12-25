@@ -97,14 +97,33 @@ def predict_city(city_name):
 
     return prediction, probability
 
+def risk_label(prob_flood):
+    if prob_flood < 0.35:
+        return "Low"
+    elif prob_flood < 0.65:
+        return "Medium"
+    else:
+        return "High"
+
 
 # --------------------------------------------------
 # Test block
 # --------------------------------------------------
 
 if __name__ == "__main__":
-    for city in ["Kolkata", "Delhi", "Mumbai", "Chennai"]:
+    results = []
+
+    for city in CITY_DF["city"]:
         pred, prob = predict_city(city)
-        print(f"{city} → Prediction:", pred)
-        print(f"{city} → Probabilities:", prob)
+        flood_prob = prob[0][1]
+        risk = risk_label(flood_prob)
+
+        results.append((city, flood_prob, risk))
+
+    # Sort by flood probability descending
+    results.sort(key=lambda x: x[1], reverse=True)
+
+    for city, flood_prob, risk in results:
+        print(f"{city.title()} → Flood Probability: {flood_prob:.2f}")
+        print(f"{city.title()} → Risk Level: {risk}")
         print("-" * 40)
