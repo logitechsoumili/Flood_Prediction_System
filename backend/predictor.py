@@ -1,22 +1,16 @@
 import numpy as np
 import pandas as pd
 import joblib
+import os
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # --------------------------------------------------
 # Load trained ML model
 # --------------------------------------------------
-model = joblib.load("../flood_model_v1.pkl")
+model = joblib.load(os.path.join(BASE_DIR, "flood_model_v1.pkl"))
 
-
-# --------------------------------------------------
-# Simulated city-level feature database (V1)
-# --------------------------------------------------
-# NOTE:
-# These are reasonable approximations for V1.
-# In later versions, these will come from real APIs / datasets.
-# --------------------------------------------------
-
-CITY_DF = pd.read_csv("../data/city_features.csv")
+CITY_DF = pd.read_csv(os.path.join(BASE_DIR, "data", "city_features.csv"))
 CITY_DF["city"] = CITY_DF["city"].str.lower()
 
 # --------------------------------------------------
@@ -95,7 +89,26 @@ def predict_city(city_name):
     prediction = model.predict(X)[0]
     probability = model.predict_proba(X)
 
-    return prediction, probability
+    flood_prob = float(probability[0][1])
+    risk = risk_label(flood_prob)
+
+    return {
+        "city": city_name.title(),
+        "flood_probability": round(flood_prob, 2),
+        "risk_level": risk,
+        "parameters": {
+            "rainfall": float(row["rainfall"]),
+            "temperature": float(row["temperature"]),
+            "humidity": float(row["humidity"]),
+            "river_discharge": float(row["river_discharge"]),
+            "water_level": float(row["water_level"]),
+            "elevation": float(row["elevation"]),
+            "population_density": int(row["population_density"]),
+            "historical_floods": int(row["historical_floods"]),
+            "land_cover": str(row["land_cover"]),
+            "soil_type": str(row["soil_type"])
+        }
+    }
 
 def risk_label(prob_flood):
     if prob_flood < 0.35:
@@ -107,16 +120,16 @@ def risk_label(prob_flood):
 
 
 # --------------------------------------------------
-# Test block
+# Local testing only (not used by Flask)
 # --------------------------------------------------
 
 if __name__ == "__main__":
     results = []
 
     for city in CITY_DF["city"]:
-        pred, prob = predict_city(city)
-        flood_prob = prob[0][1]
-        risk = risk_label(flood_prob)
+        result = predict_city(city)
+        flood_prob = result["flood_probability"]
+        risk = result["risk_level"]
 
         results.append((city, flood_prob, risk))
 

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flood Risk Dashboard</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #0f172a;
+            color: #e5e7eb;
+        }
+
+        /* Top Navigation */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 32px;
+            background-color: #020617;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .nav-links a {
+            margin-left: 20px;
+            color: #cbd5f5;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #60a5fa;
+        }
+
+        /* Status Bar */
+        .status-bar {
+            display: flex;
+            gap: 40px;
+            padding: 12px 32px;
+            background-color: #020617;
+            border-bottom: 1px solid #1e293b;
+            font-size: 14px;
+        }
+
+        .status-item span {
+            color: #22c55e;
+            font-weight: bold;
+        }
+
+        /* Main Layout */
+        .main {
+            display: grid;
+            grid-template-columns: 2fr 2fr;
+            gap: 20px;
+            padding: 24px 32px;
+        }
+
+        /* Map Section */
+        .map-container {
+            background-color: #020617;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .map-header {
+            padding: 12px 16px;
+            border-bottom: 1px solid #1e293b;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .toggle-buttons button {
+            margin-left: 8px;
+            padding: 6px 10px;
+            background-color: #1e293b;
+            border: none;
+            color: #e5e7eb;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .toggle-buttons button:hover {
+            background-color: #334155;
+        }
+
+        iframe {
+            width: 100%;
+            height: 520px;
+            border: none;
+        }
+
+        /* Side Panel */
+        .side-panel {
+            background-color: #020617;
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        .side-panel h3 {
+            margin-top: 0;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            border-radius: 4px;
+            border: none;
+        }
+
+        button.predict-btn {
+            width: 100%;
+            margin-top: 12px;
+            padding: 10px;
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button.predict-btn:hover {
+            background-color: #1d4ed8;
+        }
+
+        .result-box {
+            margin-top: 16px;
+            padding: 12px;
+            background-color: #020617;
+            border: 1px solid #1e293b;
+            border-radius: 6px;
+        }
+
+        /* Alerts Section */
+        .alerts {
+            padding: 24px 32px;
+        }
+
+        .alerts h3 {
+            margin-bottom: 10px;
+        }
+
+        .alert-item {
+            margin-bottom: 6px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <div><strong>Flood Prediction System</strong></div>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/dashboard">Dashboard</a>
+            <a href="#">About</a>
+        </div>
+    </div>
+
+    <!-- STATUS BAR -->
+    <div class="status-bar">
+        <div class="status-item">System Status: <span>Operational</span></div>
+        <div class="status-item">Data Mode: <span>Historical / Simulated</span></div>
+        <div class="status-item">Last Updated: <span>2025-01-25</span></div>
+    </div>
+
+    <!-- MAIN DASHBOARD -->
+    <div class="main">
+
+        <!-- MAP -->
+        <div class="map-container">
+            <div class="map-header">
+                <strong>Flood Risk Map</strong>
+                <div class="toggle-buttons">
+                    <button id="cityViewBtn">City View</button>
+                    <button id="heatmapViewBtn">Heatmap View</button>
+                </div>
+            </div>
+
+            <iframe id="mapFrame" src="/maps/city_markers_map.html"></iframe>
+
+            <!-- ALERTS -->
+            <div class="alerts">
+                <h3>Alert Summary</h3>
+                <div class="alert-item">🔴 High Risk Cities: Chennai, Mumbai, Kolkata</div>
+                <div class="alert-item">🟠 Medium Risk Cities: Pune, Bengaluru, Jaipur</div>
+                <div class="alert-item">🟢 Low Risk Cities: Leh, Kargil</div>
+            </div>
+        </div>
+
+        <!-- SIDE PANEL -->
+        <div class="side-panel">
+            <h3>Search by City</h3>
+            <input type="text" id="cityInput" placeholder="Enter city name">
+            <button class="predict-btn" id="predictBtn">Predict Flood Risk</button>
+
+
+            <div class="result-box">
+                <h2 id="reportCity">City Report</h2>
+
+                <p><strong>Flood Probability:</strong> <span id="probability">—</span></p>
+                <p><strong>Risk Level:</strong> <span id="riskLevel">—</span></p>
+
+                <hr style="border-color:#1e293b">
+
+                <p><strong>Rainfall (mm):</strong> <span id="rainfall">—</span></p>
+                <p><strong>River Discharge (m³/s):</strong> <span id="riverDischarge">—</span></p>
+                <p><strong>Water Level (m):</strong> <span id="waterLevel">—</span></p>
+                <p><strong>Temperature (°C):</strong> <span id="temperature">—</span></p>
+                <p><strong>Humidity (%):</strong> <span id="humidity">—</span></p>
+                <p><strong>Elevation (m):</strong> <span id="elevation">—</span></p>
+                <p><strong>Population Density:</strong> <span id="populationDensity">—</span></p>
+                <p><strong>Land Cover:</strong> <span id="landCover">—</span></p>
+                <p><strong>Soil Type:</strong> <span id="soilType">—</span></p>
+            </div>
+        </div>
+
+    </div>
+
+<script>
+document.getElementById("predictBtn").addEventListener("click", async () => {
+    const city = document.getElementById("cityInput").value.trim();
+    if (!city) return alert("Enter a city");
+
+    const res = await fetch("/predict-city", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ city })
+    });
+
+    const data = await res.json();
+    if (data.error) return alert(data.error);
+
+    document.getElementById("reportCity").innerText = data.city + " – Risk Report";
+    document.getElementById("probability").innerText = (data.flood_probability * 100).toFixed(1) + "%";
+    document.getElementById("riskLevel").innerText = data.risk_level;
+
+    const p = data.parameters;
+    document.getElementById("rainfall").innerText = p.rainfall;
+    document.getElementById("riverDischarge").innerText = p.river_discharge;
+    document.getElementById("waterLevel").innerText = p.water_level;
+    document.getElementById("temperature").innerText = p.temperature;
+    document.getElementById("humidity").innerText = p.humidity;
+    document.getElementById("elevation").innerText = p.elevation;
+    document.getElementById("populationDensity").innerText = p.population_density;
+    document.getElementById("landCover").innerText = p.land_cover;
+    document.getElementById("soilType").innerText = p.soil_type;
+});
+</script>
+
+<script>
+const mapFrame = document.getElementById("mapFrame");
+
+document.getElementById("cityViewBtn").onclick = () => {
+    mapFrame.src = "/maps/city_markers_map.html";
+};
+
+document.getElementById("heatmapViewBtn").onclick = () => {
+    mapFrame.src = "/maps/flood_risk_heatmap.html";
+};
+</script>
+
+<script>
+    function toggleMap(view) {
+        const mapFrame = document.querySelector('iframe');
+        mapFrame.contentWindow.postMessage({ view: view }, '*');
+    }
+</script>
+
+</body>
+</html>
