@@ -20,15 +20,22 @@ This project combines machine learning with geospatial visualization to identify
 ```
 Flood_Prediction_System/
 ├── README.md                          # This file
-├── flood_model_v1.pkl                 # Trained ML model
+├── requirements.txt                   # Python dependencies
+├── V1_flood_prediction.ipynb          # Jupyter notebook for EDA & model training
 ├── data/
-│   └── city_features.csv              # City environmental features
+│   ├── city_features.csv              # City environmental features
+│   └── flood_risk_dataset_india.csv   # Historical flood risk dataset
 ├── backend/
-│   └── predictor.py                   # Core prediction engine
-└── maps/
-    ├── generate_map.py                # Map generation script
-    ├── flood_risk_map.html            # Interactive output map
-    └── city_coordinates.csv           # City lat/lon data
+│   ├── predictor.py                   # Core prediction engine
+│   └── server.py                      # Flask API server
+├── maps/
+│   ├── generate_map.py                # Map generation script
+│   ├── city_coordinates.csv           # City lat/lon data
+│   ├── city_predictions.csv           # Predictions output
+│   ├── city_markers_map.html          # Interactive city risk markers map
+│   └── flood_risk_heatmap.html        # Intensity heatmap visualization
+└── templates/
+    └── dashboard.html                 # Web dashboard (Flask template)
 ```
 
 ## Tech Stack
@@ -48,19 +55,28 @@ Flood_Prediction_System/
 
 ## Usage
 
-### Generate Predictions & Map
+### Option 1: Run Predictions & Generate Maps
 
 ```bash
 cd backend
 python predictor.py  # Run predictions for all cities
 
 cd ../maps
-python generate_map.py  # Generate interactive HTML map
+python generate_map.py  # Generate interactive HTML maps
 ```
 
-Open `maps/flood_risk_map.html` in a web browser to view the map.
+Open `maps/city_markers_map.html` or `maps/flood_risk_heatmap.html` in a web browser to view the maps.
 
-### Prediction API
+### Option 2: Start the Flask API Server
+
+```bash
+cd backend
+python server.py  # Start the Flask API on localhost:5000
+```
+
+Access the dashboard at `http://localhost:5000` and use the API endpoints for predictions.
+
+### Option 3: Direct Python API
 
 ```python
 from backend.predictor import predict_city, risk_label
@@ -88,14 +104,16 @@ print(f"{city_name}: {flood_probability:.2f} ({risk} Risk)")
 - Limited to 50 pre-defined cities
 - No real-time data updates yet
 - Model trained on synthetic/historical data only
+- Dashboard and server components in early development stage
 
 ## Next Steps (Phase 2)
 
 - Integrate live weather APIs (OpenWeatherMap, WeatherAPI)
 - River discharge data from government sources
 - Improve model accuracy with real datasets
-- Deploy as REST API service
+- Enhanced REST API endpoints and documentation
 - Add time-series predictions (7-day forecast)
+- Database integration for historical tracking
 
 ## License
 
